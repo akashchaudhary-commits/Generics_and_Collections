@@ -11,7 +11,7 @@ public class List_ArrayList{
     public static void main(String[] args)
     {
 //        Collection<Integer> lis2 = new ArrayList<>();
-//        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list1 = new ArrayList<>();
         ArrayList<Integer> list = new ArrayList<>();
 
         // Adding Elemennts
