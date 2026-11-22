@@ -15,7 +15,7 @@
 // It allows duplicate values.
 // It allows one null key.
 // It allows multiple null values.
-// It uses hashCode() and equals() internally.
+
 
 import java.util.*;
 

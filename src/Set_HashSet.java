@@ -1,79 +1,70 @@
-// Set Interface - used to store and access data randomly
-
-// Duplicate values are not allowed
-
-// HashSet - class Used to implement Set Interface
-
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.*;
 public class Set_HashSet {
-    public static void main(String[] main)
+    public static void main(String[] args)
     {
-        Set<Integer> set1 = new HashSet<>();
-        //HashSet<Integer> set2 = new HashSet<>();
+        Set<Integer> hashset = new HashSet<>();
 
-        // insertion order is not maintained
-        set1.add(24);
-        set1.add(56);
-        set1.add(47);
-        set1.add(27);
-        set1.add(78);
-        System.out.println("Set1:  " + set1);
+        hashset.add(69);
+        hashset.add(20);
+        hashset.add(40);
+        hashset.add(45);
+        hashset.add(60);
+        hashset.add(16);
+        System.out.println(hashset);
 
-        // addAll() -
-        Set<Integer> set2 = new HashSet<>();
-        //HashSet<Integer> set2 = new HashSet<>();
+        // addall
+        Set<Integer> hashset2 = new HashSet<>();
+        hashset2.add(70);
+        hashset2.add(71);
+        hashset2.add(72);
+        hashset2.add(73);
+        hashset.addAll(hashset2);
+        System.out.println(hashset);
 
-        // insertion order is not maintained
-        set2.add(57);
-        set2.add(1);
-        set2.add(24);
-        set2.add(3);
-        set2.add(4);
-        System.out.println("Set 2: " + set2);
 
-        set1.addAll(set2);
-        System.out.println("Set 1 after adding Set2: " + set1);
+        //remove()
+        hashset.remove(71);
+        System.out.println(hashset);
 
-        // delete -
-        set2.remove(24);
-        System.out.println("Set 2 after removing 24: " + set2);
 
-        // contains() - search an element
-        System.out.println(set1.contains(35));
+        //contains()
+        System.out.println(hashset.contains(71));
 
-        // retainAll()  - intersection of two sets
-        System.out.println("Set 1: " + set1);
-        System.out.println("Set2 : " + set2);
-        //set1.retainAll(set2);
-        System.out.println("After Intersection: " + set1);
 
-        //containsAll() -
-        System.out.println("Set 1: " + set1);
-        System.out.println("Set 2: " +set2);
-        System.out.println(set1.containsAll(set2));
+        //retainall()
+        System.out.println("Hashset: " + hashset);
+        System.out.println("hashset2: " + hashset2);
+        hashset.retainAll(hashset2);
+        System.out.println("After intersection; " + hashset);
 
-        // size()  - length
-        System.out.println("Size of set1 : " + set1.size());
 
-        // isEmpty - checks if set is empty or not
-        System.out.println(set1.isEmpty());
+        //size()
+        System.out.println(hashset.size());
+
+
+        //isEmpty()
+        System.out.println(hashset.isEmpty());
 
         // hashcode()
-        set2.add(56);
+        // returns a hashcode value(address of element in the set)
+        // used to access elements randomly
 
-        System.out.println("Hashcode of 56 in Set 1: "+ Integer.valueOf(56).hashCode());
-        System.out.println("Hashcode of 56 in Set 2: " + Integer.valueOf(56).hashCode());
-        System.out.println("HashCode of Set1: " + set1.hashCode());
+        //1. Java calls hashCode() for the object being added.
+        //2. HashSet uses the hash code to determine the appropriate bucket.
+        //3. If another object is already in that bucket, HashSet uses equals()
+        // to check whether the values are equal.
+        //4. If an equal element already exists, it does not add the duplicate.
 
-        Set<String> set3 = new HashSet<>();
-        set3.add("123");
-        System.out.println("HashCode of akash in set3: " + Integer.valueOf("123").hashCode()) ;
+        Set<Integer> set1 = new HashSet<>();
+        set1.add(11);
+        set1.add(20);
+        set1.add(35);
 
-
-
-
+        System.out.println("HashSet: " + set1);
+        System.out.println("HashCode of 10: " + Integer.valueOf(11).hashCode());
+        System.out.println("HashCode of 20: " + Integer.valueOf(20).hashCode());
+        System.out.println("HashCode of 30: " + Integer.valueOf(35).hashCode());
+        System.out.println("HashCode of HashSet: " + set1.hashCode());
 
 
     }

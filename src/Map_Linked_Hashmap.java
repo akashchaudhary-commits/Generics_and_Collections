@@ -10,14 +10,17 @@
 // Map can contain duplicate values but not duplicate keys
 
 // HashMap - a class that implements the Map interface
-// It maintain insertion order.
+// It does not maintain insertion order.
 // It does not allow duplicate keys.
 // It allows duplicate values.
 // It allows one null key.
 // It allows multiple null values.
 // It uses hashCode() and equals() internally.
 
-import java.util.*;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Map_Linked_Hashmap {
     public static void main(String[] args)

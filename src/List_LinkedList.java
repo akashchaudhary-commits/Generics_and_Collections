@@ -7,87 +7,128 @@
 
 import java.util.*;
 
-public class List_LinkedList{
+public class List_LinkedList {
     public static void main(String[] args)
     {
-//        Collection<Integer> lis2 = new ArrayList<>();
-        List<Integer> list1 = new ArrayList<>();
+        //Collection<Integer> list = new LinkedList<>();
+        //List<Integer> list = new LinkedList<>();
         LinkedList<Integer> list = new LinkedList<>();
-
-        // Adding Elemennts
-        list.add(10);
-        list.add(20);
+        list.add(20);// or list.offer()
         list.add(30);
         list.add(40);
-        list.add(50);
-
+        list.add(79);
+        list.add(3);
+        list.add(54);
         System.out.println(list);
 
-        // adding at Specific positions
-        list.add(3, 45);
-        System.out.println("After Adding at index 3: " + list);
+        // add at any Index -
+        list.add(1,5);
+        System.out.println("After insertion: " + list);
+        list.addFirst(67);
+        list.addLast(23);
 
-        list.addFirst(46);
-        list.addLast(68);
-        System.out.println("Adding first and last: " + list);
-
-        System.out.println("get first and Get last: ");
-        System.out.println(list.getFirst());
-        System.out.println(list.getLast());
+        // get() - access an element
+        System.out.println("Element at Index 2: " + list.get(2));
 
 
-        // accessing an element
-        System.out.println("get method: ");
-        System.out.println(list.get(3));
+        // set() - update an element
+        list.set(0, 10);
+        System.out.println("Updated list: " + list);
 
-        // set() - replace a particular element
-        list.set(3, 60);
-        System.out.println("USing set methos: " + list);
-
-        //remove() - to delete an element
+        // remove() - remove n element by index
         list.remove(3);
-        list.remove(Integer.valueOf(40));
-        System.out.println("After removing: "+ list);
+        System.out.println("After removing: " + list);
+        list.removeLast();
+        list.removeFirst();
 
-        // contains() - searches for an element
-        System.out.println("element in list found: " + list.contains(19));
+        // contains() - search for an element
+        System.out.println("Contains 30: " + list.contains(30));
 
-        // addAll() - merging two list elements into one another
-        ArrayList<Integer> list2 = new ArrayList<>();
-        list2.add(70);
-        list2.add(80);
-        list2.add(10);
-        list2.add(20);
-        System.out.println("List: " + list);
-        System.out.println("List2: " + list2);
+        // size - find the size of the list
+        System.out.println("Size of list: " + list.size());
 
-        list.addAll(list2);
-        System.out.println("Mergedlist: " + list);
-
-        // retainAll() - to find common elements in the list
-//        list.retainAll(list2);
-//        System.out.println("list after intersectio: " + list);
-
-        //sublist() - get particular range elements
-        System.out.println("List from 2 to 5" + list.subList(2, 5));
-
-        // toArray() to convert list into array
-        Object[] arr = list.toArray();
-        System.out.println("After converting to array: " + list);
-        for(int i=0;i<arr.length;i++)
+        // traverse the list
+        for(int i:list)
         {
-            System.out.println(arr[i]);
+            System.out.println(i);
         }
 
-        System.out.println("list : " + list);
-        Collections.sort(list);
-        System.out.println("List in Ascending order: " + list);
-        Collections.sort(list, Collections.reverseOrder());
-        System.out.println("List in descending order: " + list);
+        //addAll() - add one list elements to other
+        ArrayList<Integer> list2 = new ArrayList<>();
+        list2.add(57);
+        list2.add(48);
+        list2.add(56);
+        System.out.println("List2: " + list2);
+        list.addAll(list2);
+        System.out.println("list1 + list2: " + list);
+
+        // removeAll - the other list elements
+//        list.removeAll(list2);
+//        System.out.println(list);
+
+        // retainAll() - retain common elements
+        list.retainAll(list2);
+        System.out.println(list);
+
+        // to Array() - converts list into array
+        list2.toArray();
+        System.out.println("List 2 Array: " + list2);
+
+        // subList(from , to)
+        System.out.println("List from 0 to 2 " + list.subList(0, 2));
+
+        // Queue Operations using list
+        list.poll();
+        list.pollFirst();
+        list.pollLast();
+        list.peek();
+        list.push(23);
 
 
+        // Traversing the ArrayList -
+        // 1. Using a for loop -
+        System.out.println("USing For loop");
+        for(int i=0;i<list.size();i++)
+        {
+            System.out.println(list.get(i));
+        }
+
+        // Using for - each loop
+        System.out.println("USing For-each loop");
+        for(int i: list)
+        {
+            System.out.println(i);
+        }
+
+        // USing Iterator
+        // import java.util.Iterator
+        list.add(79);
+        list.add(3);
+        list.add(54);
+        System.out.println("USing Iterator");
+        Iterator<Integer> itr = list.iterator();
+//        while(itr.hasNext())
+//        {
+//            System.out.println(itr.next());
+//        }
+        System.out.println("List before remove: " + list);
+//        for(int i: list)
+//        {
+//            if(i==48)
+//            {
+//                list.remove(Integer.valueOf(i));
+//            }
+//        }
+//        System.out.println("List after removng: " + list);
 
 
-
+        System.out.println("Remove using Iterator: ");
+        while(itr.hasNext())
+        {
+            if(itr.next() == 48){
+                itr.remove();
+            }
+        }
+        System.out.println(list);
     }
 }

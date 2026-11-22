@@ -11,7 +11,7 @@ public class Set_LinkedHashset {
         HashSet<Integer> set1 = new LinkedHashSet<>();
         //LinkedHashSet<Integer> set2 = new LinkedHashSet<>();
 
-        // insertion // adds data in random order
+        // insertion order is maintained in LinkedHashSet
         set1.add(45);
         set1.add(13);
         set1.add(67);

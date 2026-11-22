@@ -12,7 +12,7 @@ public class Set_TreeSet {
         Set<Integer> set1 = new TreeSet<>();
         // TreeSet<Integer> set1 = new TreeSet<>();
 
-        // insertion // adds data in random order
+        // insertion happens in sorted order
         set1.add(45);
         set1.add(13);
         set1.add(67);

@@ -1,32 +1,27 @@
 package Collections_Practice;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 abstract class Vehicle{
-    private String Rno;
-    private String model;
-    private double baseRPD;
-
+    protected String Rno;
+    protected String model;
+    protected double baseRPD;
     Vehicle(String Rno, String model, double baseRPD)
     {
         this.Rno = Rno;
         this.model = model;
         this.baseRPD = baseRPD;
     }
-    abstract double calculateRentalCost(int days);
+    abstract double calculateTotalCost(int days);
 
-    public String getRno()
-    {
+    public String getRno() {
         return Rno;
     }
-    public String getmodel()
-    {
+    public String getModel() {
         return model;
     }
-    public double getBaseRPD()
-    {
+    public double getBaseRPD() {
         return baseRPD;
     }
 }
@@ -38,93 +33,74 @@ class Car extends Vehicle{
         this.seatingCapacity = seatingCapacity;
     }
     @Override
-    double calculateRentalCost(int days)
+    double calculateTotalCost(int days)
     {
-        return ((getBaseRPD() * days) + (seatingCapacity*50.0));
+        return (baseRPD * days) + (seatingCapacity * 50.0);
     }
 }
 class Truck extends Vehicle{
-    double loadCapacity;
+    private double loadCapacity;
     Truck(String Rno, String model, double baseRPD, double loadCapacity)
     {
         super(Rno, model, baseRPD);
         this.loadCapacity = loadCapacity;
     }
     @Override
-    double calculateRentalCost(int days)
+    double calculateTotalCost(int days)
     {
-        return ((getBaseRPD()*days) + (loadCapacity*150.0));
+        return (baseRPD * days) + (loadCapacity * 150.0);
     }
-
 }
 class FleetManager{
-    List<Vehicle> fleet = new ArrayList<>();
+    ArrayList<Vehicle> list = new ArrayList<>();
     public void addVehicle(Vehicle v)
     {
-        fleet.add(v);
+        list.add(v);
     }
-    public void displayTotalRentCoat(int days)
+    public void displayTotalCost(int days)
     {
         double total = 0.0;
-        for(Vehicle v : fleet)
+        for(Vehicle v: list)
         {
-            total += v.calculateRentalCost(days);
+            total += v.calculateTotalCost(days);
         }
-        System.out.printf("Total Rent cost for %d days is %.2f ", days, total);
+        System.out.println("Totals cost : " + total);
     }
-    public void filterByMinRate(double minRate)
-    {
-        for(Vehicle v: fleet)
-        {
-            if(v.getBaseRPD() >= minRate)
-            {
-                System.out.println(v.getRno());
-            }
-        }
-    }
-
 }
 public class Ques2 {
     public static void main(String[] args)
     {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the no. of vehicles: ");
-        int N = sc.nextInt();
+        int n = sc.nextInt();
         FleetManager f = new FleetManager();
-        for(int i=0;i<N;i++)
+        for(int i=0;i<n;i++)
         {
-            System.out.println("Enter vehicle type: ");
-            String type = sc.next();
-            System.out.println("Enter Registration no: ");
-            String rno = sc.next();
-            System.out.println("Enter Model: ");
-            String model = sc.next();
-            sc.nextLine();
-            System.out.println("Enter Rate: ");
+            System.out.println("Enter the type of Vehicle: ");
+            String type = sc.nextLine();
+            System.out.println("Enter the Registration no.: ");
+            String Rno = sc.nextLine();
+            System.out.println("Enter the Model: ");
+            String model = sc.nextLine();
+            System.out.println("Enter the Base Rate Per day: ");
             double rate = sc.nextDouble();
             if(type.equalsIgnoreCase("Car"))
             {
-                System.out.println("Enter no. of seats for car: ");
-                int seats = sc.nextInt();
-                f.addVehicle(new Car(rno, model, rate, seats));
+                System.out.println("Enter the Seating Capacity");
+                int seatingCapacity = sc.nextInt();
+                f.addVehicle(new Car(Rno, model, rate, seatingCapacity));
             }
             else if(type.equalsIgnoreCase("Truck"))
             {
-                System.out.println("Enter load capacity for truck: ");
-                double capacity = sc.nextDouble();
-                f.addVehicle(new Truck(rno, model, rate, capacity));
+                System.out.println("Enter the Load Capacity");
+                double loadCapacity = sc.nextDouble();
+                f.addVehicle(new Truck(Rno, model, rate, loadCapacity));
             }
 
-
         }
-        System.out.println("Enter no. of days");
+        System.out.println("Enter the no of days");
         int days = sc.nextInt();
-        System.out.println("Enter the minRate: ");
-        double minRate = sc.nextDouble();
-
-        f.displayTotalRentCoat(days);
-        f.filterByMinRate(minRate);
-
+        f.displayTotalCost(days);
 
     }
 }
